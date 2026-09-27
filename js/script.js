@@ -157,7 +157,7 @@
     ].join("\n");
 
     window.location.href =
-      "mailto:cpa.shivani@gmail.com?subject=" +
+      "mailto:contact@aeontaxaccounting.com?subject=" +
       encodeURIComponent("Consultation request from " + name) +
       "&body=" +
       encodeURIComponent(body);
@@ -165,7 +165,7 @@
     if (status) {
       status.hidden = false;
       status.textContent =
-        "Your email application should open with this message addressed to Aeon Tax and Accounting Services, LLC. Send it from there to reach us. You can also call +1 (848) 391-3730 or email cpa.shivani@gmail.com directly.";
+        "Your email application should open with this message addressed to Aeon Tax and Accounting Services, LLC. Send it from there to reach us. You can also call +1 (555) 555-0100 or email contact@aeontaxaccounting.com directly.";
     }
   });
 })();
