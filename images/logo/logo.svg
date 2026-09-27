@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72" fill="none" role="img" aria-label="Aeon Tax and Accounting Services">
+  <circle cx="36" cy="36" r="34" stroke="#10243F" stroke-width="1.75"/>
+  <circle cx="36" cy="36" r="29.25" stroke="#A6844A" stroke-width="0.7"/>
+  <path fill="#10243F" fill-rule="evenodd" d="M36 14.2 53.4 56.8h-7.1l-3.15-8.15H28.85L25.7 56.8h-7.1L36 14.2Zm0 16.15-4.35 11.25h8.7L36 30.35Z"/>
+  <path d="M27.4 43.15h17.2" stroke="#A6844A" stroke-width="2.15" stroke-linecap="round"/>
+</svg>
