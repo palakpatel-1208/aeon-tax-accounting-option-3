@@ -41,8 +41,17 @@ body {
   line-height: 1.65;
 }
 
+html.nav-open,
 body.nav-open {
   overflow: hidden;
+  overscroll-behavior: none;
+}
+
+body.is-locked {
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
 }
 
 img {
@@ -1035,6 +1044,18 @@ input:focus, select:focus, textarea:focus {
     gap: 0.15rem;
   }
 
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 80;
+  }
+
+  body {
+    padding-top: var(--nav-top, 131px);
+  }
+
   .nav-toggle {
     display: inline-flex;
     align-items: center;
@@ -1070,15 +1091,30 @@ input:focus, select:focus, textarea:focus {
     width: 100%;
   }
 
+  .site-nav {
+    overscroll-behavior: contain;
+  }
+
+  .has-sub {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .has-sub > a {
+    flex: 0 1 auto;
+  }
+
   .submenu {
     position: static;
     opacity: 1;
     visibility: visible;
     transform: none;
     display: none;
+    flex: 1 0 100%;
     box-shadow: none;
     border: 0;
-    padding: 0 0 0.4rem 0.8rem;
+    padding: 0.15rem 0 0.35rem 0.85rem;
     min-width: 0;
   }
 
@@ -1088,14 +1124,26 @@ input:focus, select:focus, textarea:focus {
 
   .sub-toggle {
     display: inline-flex;
-    margin-left: 0.25rem;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    margin: 0 0 0 0.1rem;
+    padding: 0;
     border: 0;
-    background: var(--paper);
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--navy);
     cursor: pointer;
-    vertical-align: middle;
+  }
+
+  .sub-toggle svg {
+    display: block;
+    transition: transform 0.2s ease;
+  }
+
+  .has-sub.is-open .sub-toggle svg {
+    transform: rotate(180deg);
   }
 
   .hero-grid,

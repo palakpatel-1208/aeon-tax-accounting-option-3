@@ -5,14 +5,44 @@
   var subToggle = document.querySelector(".sub-toggle");
   var hasSub = document.querySelector(".has-sub");
   var yearNodes = document.querySelectorAll("[data-year]");
+  var menuOpen = false;
+  var lockedScroll = 0;
+
+  function blockBackgroundScroll(event) {
+    if (nav && nav.contains(event.target)) return;
+    event.preventDefault();
+  }
+
+  function lockPage() {
+    lockedScroll = window.scrollY || document.documentElement.scrollTop || 0;
+    document.body.style.top = "-" + lockedScroll + "px";
+    document.body.classList.add("is-locked");
+  }
+
+  function unlockPage() {
+    document.body.classList.remove("is-locked");
+    document.body.style.top = "";
+    window.scrollTo(0, lockedScroll);
+  }
 
   function setMenu(open) {
-    if (!toggle || !nav) return;
+    if (!toggle || !nav || open === menuOpen) return;
+    menuOpen = open;
     toggle.setAttribute("aria-expanded", open ? "true" : "false");
     nav.classList.toggle("is-open", open);
     document.body.classList.toggle("nav-open", open);
+    document.documentElement.classList.toggle("nav-open", open);
     var label = toggle.querySelector(".sr-only");
     if (label) label.textContent = open ? "Close menu" : "Open menu";
+    if (open) {
+      lockPage();
+      document.addEventListener("touchmove", blockBackgroundScroll, { passive: false });
+      document.addEventListener("wheel", blockBackgroundScroll, { passive: false });
+    } else {
+      document.removeEventListener("touchmove", blockBackgroundScroll);
+      document.removeEventListener("wheel", blockBackgroundScroll);
+      unlockPage();
+    }
   }
 
   if (toggle && nav) {
